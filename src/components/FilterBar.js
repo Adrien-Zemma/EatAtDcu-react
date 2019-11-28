@@ -44,30 +44,33 @@ class FilterBar extends React.Component {
             <Fragment>
                 <Form>
                     <FormGroup row className={"FilterBar"}>
-                        <Label for="isOpen">Currently open </Label>
-                        <Col sm={1}>
-                            <Input className={"checkbox"} type="checkbox" name="isOpen" id="isOpen"
-                                   onClick={this.props.sendChangeToParent}/>
-                        </Col>
                         <Label for="campus">Campus</Label>
-                        <Col sm={1}>
+                        <Col sm={1} lg={2}>
                             <Input type="select" name="campus" id="campus" onChange={this.props.sendChangeToParent}>
                                 {optionList}
                             </Input>
                         </Col>
-                        <Col>
+                        <Col sm={1} lg={2}>
                             <ButtonGroup>
-                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent} value={""}
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                        value={""}
                                         active={this.props.filter.selectedButton === ""}>All</Button>
-                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent} value={"cafe"}
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                        value={"cafe"}
                                         active={this.props.filter.selectedButton === "cafe"}>Cafe</Button>
-                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent} value={"restaurant"}
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                        value={"restaurant"}
                                         active={this.props.filter.selectedButton === "restaurant"}>Restaurant</Button>
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                        value={"bar"}
+                                        active={this.props.filter.selectedButton === "bar"}>Bar</Button>
                             </ButtonGroup>
                         </Col>
-                        <Button onClick={this.toggle} className={"MoreFilter"}>
-                            More filter
-                        </Button>
+                        <Col lg={2}>
+                            <Button onClick={this.toggle} className={"MoreFilter"}>
+                                More filter
+                            </Button>
+                        </Col>
                     </FormGroup>
                 </Form>
                 <Collapse isOpen={this.state.collapse}>

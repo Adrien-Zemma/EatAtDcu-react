@@ -67,14 +67,13 @@ class Restaurants extends React.Component {
             if (filter.campus !== "null" && restaurant.campus[0] !== filter.campus) {
                 continue
             }
-            if (filter.open && (9 < restaurant.opening_hours.split(':')[0] || 9 > restaurant.closing_hours.split(':')[0])) {
+            if (filter.open && (date.getHours() < restaurant.opening_hours.split(':')[0] || date.getHours() > restaurant.closing_hours.split(':')[0])) {
                 continue
             }
-            if (filter.selectedButton !== '' && filter.selectedButton !== restaurant.type[0])
-            {
+            if (filter.selectedButton !== '' && filter.selectedButton !== restaurant.type[0]) {
                 continue
             }
-                restaurants.push(restaurant);
+            restaurants.push(restaurant);
         }
         return restaurants;
     }

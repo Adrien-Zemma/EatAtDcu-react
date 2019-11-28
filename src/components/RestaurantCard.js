@@ -2,9 +2,10 @@ import React, {Fragment} from 'react'
 import JSONPretty from 'react-json-pretty';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {IoIosTime} from 'react-icons/io'
+import {IoIosTime, IoMdCafe} from 'react-icons/io'
 import {FaChair, FaKey, FaMapMarkerAlt} from "react-icons/fa";
 import {GiPlantsAndAnimals} from "react-icons/gi";
+import {MdLocalBar, MdRestaurant} from "react-icons/md";
 
 import {
     Button,
@@ -71,6 +72,21 @@ class RestaurantCard extends React.Component {
                                     {
                                         this.props.data.is_staff_only ? <Col lg={1} md={1} sm={1} xl={1}>
                                             <span><FaKey/></span>
+                                        </Col> : null
+                                    }
+                                    {
+                                        this.props.data.type[0] === "cafe" ? <Col lg={1} md={1} sm={1} xl={1}>
+                                            <span><IoMdCafe/></span>
+                                        </Col> : null
+                                    }
+                                    {
+                                        this.props.data.type[0] === "restaurant" ? <Col lg={1} md={1} sm={1} xl={1}>
+                                            <span><MdRestaurant/></span>
+                                        </Col> : null
+                                    }
+                                    {
+                                        this.props.data.type[0] === "bar" ? <Col lg={1} md={1} sm={1} xl={1}>
+                                            <span><MdLocalBar/></span>
                                         </Col> : null
                                     }
                                 </Row>
