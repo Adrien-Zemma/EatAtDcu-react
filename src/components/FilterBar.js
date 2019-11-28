@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import "../static/style/FilterBar.css"
 
-import {Button, Col, Collapse, Form, FormGroup, Input, Label, ButtonGroup} from 'reactstrap';
+import {Button, ButtonGroup, Col, Collapse, Form, FormGroup, Input, Label} from 'reactstrap';
 
 class FilterBar extends React.Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class FilterBar extends React.Component {
 
         this.state = {
             collapse: false,
-            campus: []
+            campus: [],
         };
         this.toggle = this.toggle.bind(this)
     }
@@ -57,9 +57,12 @@ class FilterBar extends React.Component {
                         </Col>
                         <Col>
                             <ButtonGroup>
-                                <Button color="primary" onClick={this.props.sendChangeToParent} >All</Button>
-                                <Button color="primary" onClick={this.props.sendChangeToParent} >Cafe</Button>
-                                <Button color="primary" onClick={this.props.sendChangeToParent} >Restaurant</Button>
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent} value={""}
+                                        active={this.props.filter.selectedButton === ""}>All</Button>
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent} value={"cafe"}
+                                        active={this.props.filter.selectedButton === "cafe"}>Cafe</Button>
+                                <Button color="primary" name={"selectedButton"} onClick={this.props.sendChangeToParent} value={"restaurant"}
+                                        active={this.props.filter.selectedButton === "restaurant"}>Restaurant</Button>
                             </ButtonGroup>
                         </Col>
                         <Button onClick={this.toggle} className={"MoreFilter"}>

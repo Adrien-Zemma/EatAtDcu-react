@@ -6,11 +6,11 @@ import '../static/style/Restaurants.css'
 import MyNav from "../components/MyNav";
 import FilterBar from '../components/FilterBar'
 import Container from "reactstrap/es/Container";
+import JSONPretty from "react-json-pretty";
 
 var Airtable = require('airtable');
 let airtableApiKey = process.env.REACT_APP_AIRTABLE_KEY;
 let airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
-
 var client = new Airtable({apiKey: airtableApiKey}).base(airtableBase);
 
 class Restaurants extends React.Component {
@@ -20,7 +20,8 @@ class Restaurants extends React.Component {
         this.state = {
             restaurants: [],
             filter: {
-                campus: "null"
+                campus: "null",
+                selectedButton: ""
             }
         };
         this.handleChangeInChild = this.handleChangeInChild.bind(this);
@@ -69,7 +70,11 @@ class Restaurants extends React.Component {
             if (filter.open && (9 < restaurant.opening_hours.split(':')[0] || 9 > restaurant.closing_hours.split(':')[0])) {
                 continue
             }
-            restaurants.push(restaurant);
+            if (filter.selectedButton !== '' && filter.selectedButton !== restaurant.type[0])
+            {
+                continue
+            }
+                restaurants.push(restaurant);
         }
         return restaurants;
     }
@@ -93,8 +98,9 @@ class Restaurants extends React.Component {
         return (
             <Fragment>
                 <MyNav/>
-                <FilterBar sendChangeToParent={this.handleChangeInChild} airtable={client}/>
+                <FilterBar sendChangeToParent={this.handleChangeInChild} airtable={client} filter={this.state.filter}/>
                 <Container>
+                    <JSONPretty data={this.state.filter}/>
                     <Row>
                         <CardDeck className={"deck"}>
                             {restaurantList}

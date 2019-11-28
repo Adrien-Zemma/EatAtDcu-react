@@ -11,7 +11,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path="/">
-                <App/>
+                <Restaurants/>
             </Route>
             <Route exact path="/account">
                 <Account/>
