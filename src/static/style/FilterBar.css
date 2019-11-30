@@ -1,10 +1,56 @@
 .FilterBar {
-    margin-left: 20px;
+    background: #e6e6e6;
+    margin-left: 30px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.checkbox{
+.checkbox {
     margin-left: 3px;
 }
 
 .MoreFilter{
+    background: #e6e6e6;
+    margin-left: 50px;
+}
+
+.btn-primary:checked {
+    border: black 2px;
+}
+
+.btn-primary {
+    border-color: #e6e6e6;
+}
+
+.btn-primary:active {
+    border-color: black;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+    border-color: black;
+}
+
+.btn-primary:not(:disabled):not(.disabled).hover {
+    border-color: black;
+}
+
+.btn-group {
+    border: none;
+}
+
+.AllButton {
+    background: #cc4a2f;
+}
+
+.CafeButton {
+    background: #FFA700;
+}
+
+.RestaurantButton {
+    background: #1a3c66;
+}
+
+.BarButton {
+    background: #4f868e;
 }

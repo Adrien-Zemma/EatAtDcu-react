@@ -6,7 +6,6 @@ import '../static/style/Restaurants.css'
 import MyNav from "../components/MyNav";
 import FilterBar from '../components/FilterBar'
 import Container from "reactstrap/es/Container";
-import JSONPretty from "react-json-pretty";
 
 var Airtable = require('airtable');
 let airtableApiKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -67,7 +66,8 @@ class Restaurants extends React.Component {
             if (filter.campus !== "null" && restaurant.campus[0] !== filter.campus) {
                 continue
             }
-            if (filter.open && (date.getHours() < restaurant.opening_hours.split(':')[0] || date.getHours() > restaurant.closing_hours.split(':')[0])) {
+            if (filter.open && (date.getHours() < restaurant.opening_hours.split(':')[0] ||
+                date.getHours() > restaurant.closing_hours.split(':')[0])) {
                 continue
             }
             if (filter.selectedButton !== '' && filter.selectedButton !== restaurant.type[0]) {
@@ -84,7 +84,7 @@ class Restaurants extends React.Component {
         const restaurantFiltered = this.filterRestaurant();
         for (const reataurant of restaurantFiltered) {
             restaurantList.push(
-                <Col lg={5} md={5} sm={6}>
+                <Col lg={4} md={5} sm={6}>
                     <RestaurantCard key={reataurant.id} data={reataurant}/>
                 </Col>
             );
@@ -99,7 +99,6 @@ class Restaurants extends React.Component {
                 <MyNav/>
                 <FilterBar sendChangeToParent={this.handleChangeInChild} airtable={client} filter={this.state.filter}/>
                 <Container>
-                    <JSONPretty data={this.state.filter}/>
                     <Row>
                         <CardDeck className={"deck"}>
                             {restaurantList}

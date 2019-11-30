@@ -3,3 +3,15 @@
     color: #ffffff !important;
     margin-bottom: 20px;
 }
+
+a{
+    color: white;
+}
+
+.logo-image{
+    width: 193px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+}
