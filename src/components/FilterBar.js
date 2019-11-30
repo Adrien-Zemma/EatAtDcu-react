@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import "../static/style/FilterBar.css"
 
-import {Button, ButtonGroup, Col, Collapse, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from 'reactstrap';
 
 class FilterBar extends React.Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class FilterBar extends React.Component {
 
         return (
             <Fragment>
-                <Form>
+                <Form className={"grey-background margin-top-n-20px"}>
                     <FormGroup row className={"FilterBar"}>
                         <Label for="campus">Campus</Label>
                         <Col sm={2} md={2} lg={2}>
@@ -52,48 +52,41 @@ class FilterBar extends React.Component {
                         </Col>
                         <Col sm={2} md={2} lg={2}>
                             <ButtonGroup>
-                                <Button color="primary" className={"AllButton"} name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                <Button color="primary" className={"AllButton"} name={"selectedButton"}
+                                        onClick={this.props.sendChangeToParent}
                                         value={""}
                                         active={this.props.filter.selectedButton === ""}>All</Button>
-                                <Button color="primary" className={"CafeButton"}  name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                <Button color="primary" className={"CafeButton"} name={"selectedButton"}
+                                        onClick={this.props.sendChangeToParent}
                                         value={"cafe"}
                                         active={this.props.filter.selectedButton === "cafe"}>Cafe</Button>
-                                <Button color="primary" className={"RestaurantButton"} name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                <Button color="primary" className={"RestaurantButton"} name={"selectedButton"}
+                                        onClick={this.props.sendChangeToParent}
                                         value={"restaurant"}
                                         active={this.props.filter.selectedButton === "restaurant"}>Restaurant</Button>
-                                <Button color="primary" className={"BarButton"} name={"selectedButton"} onClick={this.props.sendChangeToParent}
+                                <Button color="primary" className={"BarButton"} name={"selectedButton"}
+                                        onClick={this.props.sendChangeToParent}
                                         value={"bar"}
                                         active={this.props.filter.selectedButton === "bar"}>Bar</Button>
                             </ButtonGroup>
                         </Col>
-                        <Col sm={2} md={2} lg={2}>
-                            <Button color={"info"} onClick={this.toggle} className={"MoreFilterButton"}>
-                                More filter
-                            </Button>
+                        <Label>Vegan</Label>
+                        <Col sm={1}>
+                            <Input className={"checkbox"} type={"checkbox"} name={"vegan"} id={"vegan"}
+                                   onClick={this.props.sendChangeToParent}/>
+                        </Col>
+                        <Label>Staff Only</Label>
+                        <Col sm={1}>
+                            <Input className={"checkbox"} type={"checkbox"} name={"staff"} id={"staff"}
+                                   onClick={this.props.sendChangeToParent}/>
+                        </Col>
+                        <Label>Currently open</Label>
+                        <Col sm={1}>
+                            <Input className={"checkbox"} type={"checkbox"} name={"open"} id={"open"}
+                                   onClick={this.props.sendChangeToParent}/>
                         </Col>
                     </FormGroup>
                 </Form>
-                 <Collapse isOpen={this.state.collapse}>
-                    <Form className={"MoreFilter"}>
-                        <FormGroup row>
-                            <Label>Vegan</Label>
-                            <Col sm={1}>
-                                <Input className={"checkbox"} type={"checkbox"} name={"vegan"} id={"vegan"}
-                                       onClick={this.props.sendChangeToParent}/>
-                            </Col>
-                            <Label>Staff Only</Label>
-                            <Col sm={1}>
-                                <Input className={"checkbox"} type={"checkbox"} name={"staff"} id={"staff"}
-                                       onClick={this.props.sendChangeToParent}/>
-                            </Col>
-                            <Label>Currently open</Label>
-                            <Col sm={1}>
-                                <Input className={"checkbox"} type={"checkbox"} name={"open"} id={"open"}
-                                       onClick={this.props.sendChangeToParent}/>
-                            </Col>
-                        </FormGroup>
-                    </Form>
-                </Collapse>
             </Fragment>
         );
     }
