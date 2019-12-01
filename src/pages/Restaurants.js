@@ -33,7 +33,7 @@ class Restaurants extends React.Component {
         this.setState({filter: tmp});
     }
 
-    async updateREstaurant() {
+    async updateRestaurants() {
         const restaurants = (await (await (client('Restaurants').select(
             {
                 view: "Grid view",
@@ -46,7 +46,7 @@ class Restaurants extends React.Component {
 
     componentDidMount() {
         this.timerID = setInterval(
-            () => this.updateREstaurant(),
+            () => this.updateRestaurants(),
             1000
         );
     }
@@ -60,7 +60,7 @@ class Restaurants extends React.Component {
         let restaurants = [];
         const filter = this.state.filter;
         for (const restaurant of this.state.restaurants) {
-            if (filter.vegan && !restaurant.is_vegan || filter.staff && !restaurant.is_staff_only) {
+            if ((filter.vegan && !restaurant.is_vegan) || (filter.staff && !restaurant.is_staff_only)) {
                 continue
             }
             if (filter.campus !== "null" && restaurant.campus[0] !== filter.campus) {
@@ -68,6 +68,9 @@ class Restaurants extends React.Component {
             }
             if (filter.open && (date.getHours() < restaurant.opening_hours.split(':')[0] ||
                 date.getHours() > restaurant.closing_hours.split(':')[0])) {
+                continue
+            }
+            if (filter.weekend && !restaurant.is_open_in_weekend) {
                 continue
             }
             if (filter.selectedButton !== '' && filter.selectedButton !== restaurant.type[0]) {

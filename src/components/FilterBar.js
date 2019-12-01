@@ -85,6 +85,11 @@ class FilterBar extends React.Component {
                             <Input className={"checkbox"} type={"checkbox"} name={"open"} id={"open"}
                                    onClick={this.props.sendChangeToParent}/>
                         </Col>
+                        <Label>open in weekend</Label>
+                        <Col sm={1}>
+                            <Input className={"checkbox"} type={"checkbox"} name={"weekend"} id={"weekend"}
+                                   onClick={this.props.sendChangeToParent}/>
+                        </Col>
                     </FormGroup>
                 </Form>
             </Fragment>

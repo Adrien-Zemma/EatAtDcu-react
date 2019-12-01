@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import JSONPretty from 'react-json-pretty';
+import RestaurantModalBody from "../components/RestaurantModalBody"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {IoIosTime, IoMdCafe} from 'react-icons/io'
@@ -17,7 +17,6 @@ import {
     Col,
     Container,
     Modal,
-    ModalBody,
     ModalFooter,
     ModalHeader,
     Row
@@ -96,11 +95,7 @@ class RestaurantCard extends React.Component {
                 </Card>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{this.props.data.name}</ModalHeader>
-                    <ModalBody>
-                        <Container>
-                            <JSONPretty data={this.props.data}/>
-                        </Container>
-                    </ModalBody>
+                    <RestaurantModalBody data={this.props.data}/>
                     <ModalFooter>
                         <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
