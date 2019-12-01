@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './static/style/index.css';
-import App from './pages/App';
 import Account from "./pages/Account";
 import Restaurants from "./pages/Restaurants";
 import * as serviceWorker from './serviceWorker';

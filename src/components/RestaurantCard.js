@@ -7,20 +7,7 @@ import {FaChair, FaKey, FaMapMarkerAlt} from "react-icons/fa";
 import {GiPlantsAndAnimals} from "react-icons/gi";
 import {MdLocalBar, MdRestaurant} from "react-icons/md";
 
-import {
-    Button,
-    Card,
-    CardBody,
-    CardImg,
-    CardText,
-    CardTitle,
-    Col,
-    Container,
-    Modal,
-    ModalFooter,
-    ModalHeader,
-    Row
-} from 'reactstrap'
+import {Card, CardBody, CardImg, CardTitle, Col, Container, Modal, ModalHeader, Row} from 'reactstrap'
 
 class RestaurantCard extends React.Component {
 
@@ -46,60 +33,54 @@ class RestaurantCard extends React.Component {
                         <CardTitle>
                             {this.props.data.name}
                         </CardTitle>
-                        <CardText>
-                            <Container>
-                                <Row>
-                                    <Col>
-                                        <span><FaMapMarkerAlt/> {this.props.data.adresse_precision}</span>
-                                    </Col>
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <span><FaMapMarkerAlt/> {this.props.data.adresse_precision}</span>
+                                </Col>
 
-                                    <Col>
-                                        <span><IoIosTime/>{this.props.data.opening_hours} to {this.props.data.closing_hours}</span>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <span><FaChair/> {this.props.data.capacity}</span>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    {
-                                        this.props.data.is_vegan ? <Col lg={1} md={1} sm={1} xl={1}>
-                                            <span><GiPlantsAndAnimals/></span>
-                                        </Col> : null
-                                    }
-                                    {
-                                        this.props.data.is_staff_only ? <Col lg={1} md={1} sm={1} xl={1}>
-                                            <span><FaKey/></span>
-                                        </Col> : null
-                                    }
-                                    {
-                                        this.props.data.type[0] === "cafe" ? <Col lg={1} md={1} sm={1} xl={1}>
-                                            <span><IoMdCafe/></span>
-                                        </Col> : null
-                                    }
-                                    {
-                                        this.props.data.type[0] === "restaurant" ? <Col lg={1} md={1} sm={1} xl={1}>
-                                            <span><MdRestaurant/></span>
-                                        </Col> : null
-                                    }
-                                    {
-                                        this.props.data.type[0] === "bar" ? <Col lg={1} md={1} sm={1} xl={1}>
-                                            <span><MdLocalBar/></span>
-                                        </Col> : null
-                                    }
-                                </Row>
-                            </Container>
-                        </CardText>
+                                <Col>
+                                    <span><IoIosTime/>{this.props.data.opening_hours} to {this.props.data.closing_hours}</span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <span><FaChair/> {this.props.data.capacity}</span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                {
+                                    this.props.data.is_vegan ? <Col lg={1} md={1} sm={1} xl={1}>
+                                        <span><GiPlantsAndAnimals/></span>
+                                    </Col> : null
+                                }
+                                {
+                                    this.props.data.is_staff_only ? <Col lg={1} md={1} sm={1} xl={1}>
+                                        <span><FaKey/></span>
+                                    </Col> : null
+                                }
+                                {
+                                    this.props.data.type[0] === "cafe" ? <Col lg={1} md={1} sm={1} xl={1}>
+                                        <span><IoMdCafe/></span>
+                                    </Col> : null
+                                }
+                                {
+                                    this.props.data.type[0] === "restaurant" ? <Col lg={1} md={1} sm={1} xl={1}>
+                                        <span><MdRestaurant/></span>
+                                    </Col> : null
+                                }
+                                {
+                                    this.props.data.type[0] === "bar" ? <Col lg={1} md={1} sm={1} xl={1}>
+                                        <span><MdLocalBar/></span>
+                                    </Col> : null
+                                }
+                            </Row>
+                        </Container>
                     </CardBody>
                 </Card>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{this.props.data.name}</ModalHeader>
                     <RestaurantModalBody data={this.props.data}/>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                    </ModalFooter>
                 </Modal>
             </Fragment>
         );

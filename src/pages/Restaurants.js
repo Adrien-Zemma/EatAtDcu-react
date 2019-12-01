@@ -87,8 +87,8 @@ class Restaurants extends React.Component {
         const restaurantFiltered = this.filterRestaurant();
         for (const reataurant of restaurantFiltered) {
             restaurantList.push(
-                <Col lg={4} md={5} sm={6}>
-                    <RestaurantCard key={reataurant.id} data={reataurant}/>
+                <Col lg={4} md={5} sm={6}  key={reataurant.id}>
+                    <RestaurantCard data={reataurant}/>
                 </Col>
             );
         }

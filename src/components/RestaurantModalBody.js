@@ -1,7 +1,5 @@
 import React from 'react'
-import {Container, ModalBody, Spinner} from "reactstrap";
-import JSONPretty from "react-json-pretty";
-import {Fetch} from 'react-request';
+import {Col, Container, ModalBody, Row} from "reactstrap";
 
 class RestaurantModalBody extends React.Component {
     constructor(props) {
@@ -13,30 +11,30 @@ class RestaurantModalBody extends React.Component {
     }
 
     render() {
+        let specialsList = [];
+
         return (
             <ModalBody>
                 <Container>
-                    <JSONPretty data={this.props.data}/>
-                    <Fetch url={"https://jfoster.pythonanywhere.com/specials/" + this.props.data.name}>
-                        {({fetching, failed, data}) => {
-                            if (fetching) {
-                                return (
-                                    <Spinner color="primary"/>
-                                );
-                            }
-                            if (failed) {
-                                return (
-                                    <p>No specials found</p>
-                                )
-                            }
-                            if (data) {
-                                return (
-                                    <JSONPretty data={data}/>
-                                );
-                            }
-                            return null;
-                        }}
-                    </Fetch>
+                    <Row>
+                        <Col>
+                            <h3>
+                                today special
+                            </h3>
+                            {this.props.data.special}
+                        </Col>
+                        {
+                            this.props.data.is_open_in_weekend ?
+                                <Col>
+                                    <h3>weekend-openning hours</h3>
+                                    <p>from {this.props.data.weekend_opening_hours} to {this.props.data.weekend_closing_hours} </p>
+                                </Col>
+                                : null
+                        }
+                        {
+
+                        }
+                    </Row>
                 </Container>
             </ModalBody>
         );
