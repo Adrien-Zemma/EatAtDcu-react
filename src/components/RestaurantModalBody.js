@@ -11,8 +11,6 @@ class RestaurantModalBody extends React.Component {
     }
 
     render() {
-        let specialsList = [];
-
         return (
             <ModalBody>
                 <Container>
@@ -30,9 +28,6 @@ class RestaurantModalBody extends React.Component {
                                     <p>from {this.props.data.weekend_opening_hours} to {this.props.data.weekend_closing_hours} </p>
                                 </Col>
                                 : null
-                        }
-                        {
-
                         }
                     </Row>
                 </Container>

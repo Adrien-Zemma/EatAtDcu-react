@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react'
 import RestaurantCard from '../components/RestaurantCard'
-import {CardDeck, Col, Row} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/style/Restaurants.css'
 import MyNav from "../components/MyNav";
 import FilterBar from '../components/FilterBar'
-import Container from "reactstrap/es/Container";
+import {CardDeck, Col, Container, Row} from 'reactstrap'
 
 var Airtable = require('airtable');
 let airtableApiKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -20,7 +19,8 @@ class Restaurants extends React.Component {
             restaurants: [],
             filter: {
                 campus: "null",
-                selectedButton: ""
+                selectedButton: "",
+                cardview: true
             }
         };
         this.handleChangeInChild = this.handleChangeInChild.bind(this);
@@ -82,32 +82,32 @@ class Restaurants extends React.Component {
     }
 
     render() {
-        let tmp = [];
         let restaurantList = [];
         const restaurantFiltered = this.filterRestaurant();
         for (const reataurant of restaurantFiltered) {
             restaurantList.push(
-                <Col lg={4} md={5} sm={6}  key={reataurant.id}>
+                <Col key={reataurant.id}>
                     <RestaurantCard data={reataurant}/>
                 </Col>
             );
         }
-        restaurantList.push(
-            <CardDeck key={1}>
-                {tmp}
-            </CardDeck>
-        );
         return (
             <Fragment>
                 <MyNav/>
                 <FilterBar sendChangeToParent={this.handleChangeInChild} airtable={client} filter={this.state.filter}/>
-                <Container>
-                    <Row>
-                        <CardDeck className={"deck"}>
-                            {restaurantList}
-                        </CardDeck>
-                    </Row>
-                </Container>
+                {
+                    this.state.cardview ?
+                        <Container className={"full-size"}>
+                            <Row>
+                                <CardDeck>
+                                    {restaurantList}
+                                </CardDeck>
+                            </Row>
+                        </Container> :
+                        null
+                }
+
+
             </Fragment>
         );
     }

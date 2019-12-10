@@ -1,16 +1,15 @@
 import React, {Fragment} from 'react'
 import RestaurantModalBody from "../components/RestaurantModalBody"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../static/style/RestaurantCard.css'
 
-import {IoIosTime, IoMdCafe} from 'react-icons/io'
-import {FaChair, FaKey, FaMapMarkerAlt} from "react-icons/fa";
-import {GiPlantsAndAnimals} from "react-icons/gi";
-import {MdLocalBar, MdRestaurant} from "react-icons/md";
+import {IoIosTime} from 'react-icons/io'
+import {FaChair, FaMapMarkerAlt, FaRegClock} from "react-icons/fa";
 
 import {Card, CardBody, CardImg, CardTitle, Col, Container, Modal, ModalHeader, Row} from 'reactstrap'
+import MiniIconList from "./MiniIconList";
 
 class RestaurantCard extends React.Component {
-
     constructor(props) {
         super(props);
 
@@ -27,8 +26,9 @@ class RestaurantCard extends React.Component {
     render() {
         return (
             <Fragment>
-                <Card onClick={this.toggle}>
-                    <CardImg top width="100%" src={this.props.data.picture} alt="Card image cap"/>
+                <Card onClick={this.toggle} className={"RestaurantCard"}>
+                    <CardImg top width="100%" className={"RestaurantCardImg"} src={this.props.data.picture}
+                             alt="Card image cap"/>
                     <CardBody>
                         <CardTitle>
                             {this.props.data.name}
@@ -47,33 +47,18 @@ class RestaurantCard extends React.Component {
                                 <Col>
                                     <span><FaChair/> {this.props.data.capacity}</span>
                                 </Col>
+                                {
+                                    this.props.data.is_open_in_weekend ?
+                                        <Col>
+                                            <span>
+                                                <FaRegClock/>
+                                                open in weekend
+                                            </span>
+                                        </Col> : null
+                                }
                             </Row>
                             <Row>
-                                {
-                                    this.props.data.is_vegan ? <Col lg={1} md={1} sm={1} xl={1}>
-                                        <span><GiPlantsAndAnimals/></span>
-                                    </Col> : null
-                                }
-                                {
-                                    this.props.data.is_staff_only ? <Col lg={1} md={1} sm={1} xl={1}>
-                                        <span><FaKey/></span>
-                                    </Col> : null
-                                }
-                                {
-                                    this.props.data.type[0] === "cafe" ? <Col lg={1} md={1} sm={1} xl={1}>
-                                        <span><IoMdCafe/></span>
-                                    </Col> : null
-                                }
-                                {
-                                    this.props.data.type[0] === "restaurant" ? <Col lg={1} md={1} sm={1} xl={1}>
-                                        <span><MdRestaurant/></span>
-                                    </Col> : null
-                                }
-                                {
-                                    this.props.data.type[0] === "bar" ? <Col lg={1} md={1} sm={1} xl={1}>
-                                        <span><MdLocalBar/></span>
-                                    </Col> : null
-                                }
+                                <MiniIconList data={this.props.data}/>
                             </Row>
                         </Container>
                     </CardBody>

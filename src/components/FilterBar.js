@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react'
 import "../static/style/FilterBar.css"
-
 import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from 'reactstrap';
 
 class FilterBar extends React.Component {
@@ -70,25 +69,29 @@ class FilterBar extends React.Component {
                                         active={this.props.filter.selectedButton === "bar"}>Bar</Button>
                             </ButtonGroup>
                         </Col>
-                        <Label>Vegan</Label>
                         <Col sm={1}>
+                            <Label>Vegan</Label>
                             <Input className={"checkbox"} type={"checkbox"} name={"vegan"} id={"vegan"}
                                    onClick={this.props.sendChangeToParent}/>
                         </Col>
-                        <Label>Staff Only</Label>
                         <Col sm={1}>
+                            <Label>Staff Only</Label>
+
                             <Input className={"checkbox"} type={"checkbox"} name={"staff"} id={"staff"}
                                    onClick={this.props.sendChangeToParent}/>
                         </Col>
-                        <Label>Currently open</Label>
                         <Col sm={1}>
+                            <Label>Currently open</Label>
                             <Input className={"checkbox"} type={"checkbox"} name={"open"} id={"open"}
                                    onClick={this.props.sendChangeToParent}/>
                         </Col>
-                        <Label>open in weekend</Label>
                         <Col sm={1}>
+                            <Label>open in weekend</Label>
                             <Input className={"checkbox"} type={"checkbox"} name={"weekend"} id={"weekend"}
                                    onClick={this.props.sendChangeToParent}/>
+                        </Col>
+                        <Col>
+
                         </Col>
                     </FormGroup>
                 </Form>

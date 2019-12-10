@@ -15,6 +15,9 @@ ReactDOM.render(
             <Route exact path="/account">
                 <Account/>
             </Route>
+            <Route exact path="/map">
+                <Account/>
+            </Route>
             <Route exact path="/restaurants">
                 <Restaurants/>
             </Route>

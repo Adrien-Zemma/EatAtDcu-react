@@ -1,3 +1,12 @@
-.deck{
-    padding-bottom: 10px;
+
+
+.margin-10 {
+    margin: 10px
+}
+
+.full-size{
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 90% !important;
 }
