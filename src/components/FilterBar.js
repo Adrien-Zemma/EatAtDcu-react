@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import "../static/style/FilterBar.css"
 import {Button, ButtonGroup, Col, Form, FormGroup, Input, Label} from 'reactstrap';
+import MySwitch from "./MySwitch";
 
 class FilterBar extends React.Component {
     constructor(props) {
@@ -69,29 +70,32 @@ class FilterBar extends React.Component {
                                         active={this.props.filter.selectedButton === "bar"}>Bar</Button>
                             </ButtonGroup>
                         </Col>
-                        <Col sm={1}>
-                            <Label>Vegan</Label>
-                            <Input className={"checkbox"} type={"checkbox"} name={"vegan"} id={"vegan"}
-                                   onClick={this.props.sendChangeToParent}/>
+                        <Col sm={2} md={2} lg={2}>
+                            <MySwitch name={"Map View"} nameValue={"cardview"}
+                                      handler={this.props.sendChangeToParentCheckBox}
+                                      filter={this.props.filter}/>
                         </Col>
-                        <Col sm={1}>
-                            <Label>Staff Only</Label>
-
-                            <Input className={"checkbox"} type={"checkbox"} name={"staff"} id={"staff"}
-                                   onClick={this.props.sendChangeToParent}/>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Col sm={1} md={1} lg={2}>
+                            <MySwitch name={"Vegan"} nameValue={"vegan"}
+                                      handler={this.props.sendChangeToParentCheckBox}
+                                      filter={this.props.filter}/>
                         </Col>
-                        <Col sm={1}>
-                            <Label>Currently open</Label>
-                            <Input className={"checkbox"} type={"checkbox"} name={"open"} id={"open"}
-                                   onClick={this.props.sendChangeToParent}/>
+                        <Col sm={1} md={1} lg={2}>
+                            <MySwitch name={"Staff Only"} nameValue={"staff"}
+                                      handler={this.props.sendChangeToParentCheckBox}
+                                      filter={this.props.filter}/>
                         </Col>
-                        <Col sm={1}>
-                            <Label>open in weekend</Label>
-                            <Input className={"checkbox"} type={"checkbox"} name={"weekend"} id={"weekend"}
-                                   onClick={this.props.sendChangeToParent}/>
+                        <Col sm={1} md={1} lg={2}>
+                            <MySwitch name={"Currently open"} nameValue={"open"}
+                                      handler={this.props.sendChangeToParentCheckBox}
+                                      filter={this.props.filter}/>
                         </Col>
-                        <Col>
-
+                        <Col sm={1} md={1} lg={2}>
+                            <MySwitch name={"open in weekend"} nameValue={"weekend"}
+                                      handler={this.props.sendChangeToParentCheckBox}
+                                      filter={this.props.filter}/>
                         </Col>
                     </FormGroup>
                 </Form>

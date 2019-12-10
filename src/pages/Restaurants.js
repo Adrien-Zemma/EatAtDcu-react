@@ -5,6 +5,7 @@ import '../static/style/Restaurants.css'
 import MyNav from "../components/MyNav";
 import FilterBar from '../components/FilterBar'
 import {CardDeck, Col, Container, Row} from 'reactstrap'
+import MyMap from "../components/MyMap";
 
 var Airtable = require('airtable');
 let airtableApiKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -20,16 +21,23 @@ class Restaurants extends React.Component {
             filter: {
                 campus: "null",
                 selectedButton: "",
-                cardview: true
+                cardview: false
             }
         };
         this.handleChangeInChild = this.handleChangeInChild.bind(this);
+        this.handleChangeInChildCheckBox = this.handleChangeInChildCheckBox.bind(this);
         this.filterRestaurant = this.filterRestaurant.bind(this);
     }
 
     handleChangeInChild(event) {
         let tmp = this.state.filter;
-        tmp[event.target.name] = event.target.type === "checkbox" ? !tmp[event.target.name] : event.target.value;
+        tmp[event.target.name || event.target.id] = event.target.type === "checkbox" ? !tmp[event.target.name] : event.target.value;
+        this.setState({filter: tmp});
+    }
+
+    handleChangeInChildCheckBox(status, name) {
+        let tmp = this.state.filter;
+        tmp[name] = status;
         this.setState({filter: tmp});
     }
 
@@ -94,9 +102,10 @@ class Restaurants extends React.Component {
         return (
             <Fragment>
                 <MyNav/>
-                <FilterBar sendChangeToParent={this.handleChangeInChild} airtable={client} filter={this.state.filter}/>
+                <FilterBar sendChangeToParentCheckBox={this.handleChangeInChildCheckBox}
+                           sendChangeToParent={this.handleChangeInChild} airtable={client} filter={this.state.filter}/>
                 {
-                    this.state.cardview ?
+                    !this.state.filter.cardview ?
                         <Container className={"full-size"}>
                             <Row>
                                 <CardDeck>
@@ -104,7 +113,7 @@ class Restaurants extends React.Component {
                                 </CardDeck>
                             </Row>
                         </Container> :
-                        null
+                        <MyMap/>
                 }
 
 
