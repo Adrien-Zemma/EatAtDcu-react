@@ -63,10 +63,13 @@ class RestaurantCard extends React.Component {
                         </Container>
                     </CardBody>
                 </Card>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>{this.props.data.name}</ModalHeader>
-                    <RestaurantModalBody data={this.props.data}/>
-                </Modal>
+                {
+                    this.props.withModal ? <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                        <ModalHeader toggle={this.toggle}>{this.props.data.name}</ModalHeader>
+                        <RestaurantModalBody data={this.props.data}/>
+                    </Modal> : null
+                }
+
             </Fragment>
         );
     }

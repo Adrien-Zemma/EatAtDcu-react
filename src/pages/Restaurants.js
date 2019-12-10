@@ -95,7 +95,7 @@ class Restaurants extends React.Component {
         for (const reataurant of restaurantFiltered) {
             restaurantList.push(
                 <Col key={reataurant.id}>
-                    <RestaurantCard data={reataurant}/>
+                    <RestaurantCard withModal={true} data={reataurant}/>
                 </Col>
             );
         }
@@ -113,7 +113,7 @@ class Restaurants extends React.Component {
                                 </CardDeck>
                             </Row>
                         </Container> :
-                        <MyMap/>
+                        <MyMap restaurants={restaurantFiltered}/>
                 }
 
 
