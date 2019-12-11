@@ -2,6 +2,7 @@ import React from 'react'
 
 import GoogleMapReact from 'google-map-react';
 import Marker from "../components/Marker"
+import {Col, Container, Row, Spinner} from 'reactstrap';
 
 class MyMap extends React.Component {
 
@@ -52,9 +53,14 @@ class MyMap extends React.Component {
                             color="green"
                         />
                     </GoogleMapReact>
-                </div> : null
-
-
+                </div> :
+                <Container>
+                    <Row>
+                        <Col>
+                            <Spinner color="dark"/>
+                        </Col>
+                    </Row>
+                </Container>
         )
             ;
     }

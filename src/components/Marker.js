@@ -1,7 +1,6 @@
 import React from 'react'
 import "../static/style/Marker.css"
-import {Modal} from "reactstrap";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantModal from "./RestaurantModal";
 
 class Marker extends React.Component {
     constructor(props) {
@@ -33,9 +32,8 @@ class Marker extends React.Component {
                 </div>
                 {
                     this.props.restaurant ?
-                        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                            <RestaurantCard withModal={false} data={this.props.restaurant}/>
-                        </Modal> : null
+                        <RestaurantModal isOpen={this.state.modal} toggle={this.toggle}
+                                         restaurant={this.props.restaurant}/> : null
                 }
 
             </div>

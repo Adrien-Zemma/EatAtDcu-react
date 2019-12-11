@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './static/style/index.css';
-import Account from "./pages/Account";
 import Restaurants from "./pages/Restaurants";
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
@@ -10,15 +9,6 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path="/">
-                <Restaurants/>
-            </Route>
-            <Route exact path="/account">
-                <Account/>
-            </Route>
-            <Route exact path="/map">
-                <Account/>
-            </Route>
-            <Route exact path="/restaurants">
                 <Restaurants/>
             </Route>
         </Switch>
