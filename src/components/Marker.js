@@ -18,7 +18,7 @@ class Marker extends React.Component {
 
 
     render() {
-        const {color, name, id, onClick} = this.props;
+        const {color, name} = this.props;
         return (
             <div>
                 <div>

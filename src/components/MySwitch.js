@@ -11,7 +11,7 @@ class MySwitch extends React.Component {
                 <Switch className={"MySwitchCheck"} height={19} width={38} onChange={(status) => {
                     this.props.handler(status, this.props.nameValue)
                 }}
-                        checked={this.props.filter[this.props.nameValue]}/>
+                        checked={this.props.filter[this.props.nameValue] || false}/>
             </div>
 
         );

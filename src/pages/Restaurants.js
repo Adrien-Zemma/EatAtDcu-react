@@ -103,7 +103,10 @@ class Restaurants extends React.Component {
             <Fragment>
                 <MyNav/>
                 <FilterBar sendChangeToParentCheckBox={this.handleChangeInChildCheckBox}
-                           sendChangeToParent={this.handleChangeInChild} airtable={client} filter={this.state.filter}/>
+                           sendChangeToParent={this.handleChangeInChild}
+                           airtable={client}
+                           filter={this.state.filter}
+                />
                 {
                     !this.state.filter.cardview ?
                         <Container className={"full-size"}>

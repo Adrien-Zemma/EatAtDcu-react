@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {Nav, Navbar, NavbarBrand, NavbarToggler, NavLink} from 'reactstrap';
+import {Nav, Navbar, NavbarBrand, NavbarToggler} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/style/MyNav.css'
 import HomeLogo from "../static/images/home.png"
@@ -22,7 +22,6 @@ class MyNav extends React.Component {
                     </NavbarBrand>
                     <NavbarToggler/>
                     <Nav className="mr-auto" navbar/>
-                    <NavLink href="/account">My Account</NavLink>
                 </Navbar>
             </Fragment>
 

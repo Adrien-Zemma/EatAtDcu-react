@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react'
 import {Col, UncontrolledTooltip} from "reactstrap";
 import {IoMdCafe} from 'react-icons/io'
-import {FaKey} from "react-icons/fa";
-import {GiPlantsAndAnimals} from "react-icons/gi";
+import {FaCarrot, FaKey} from "react-icons/fa";
 import {MdLocalBar, MdRestaurant} from "react-icons/md";
 
 class MiniIconList extends React.Component {
@@ -11,7 +10,7 @@ class MiniIconList extends React.Component {
             <Fragment>
                 {
                     this.props.restaurant.is_vegan ? <Col lg={1} md={1} sm={1} xl={1}>
-                        <span id={"is_vegan"}><GiPlantsAndAnimals/></span>
+                        <span id={"is_vegan"}><FaCarrot/></span>
                         <UncontrolledTooltip placement="auto" target="is_vegan">
                             Vegan
                         </UncontrolledTooltip>
